@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 import datetime
+from .models import Profile,Neighborhood,Business,EmergencyContacts,Post
 # Create your views here.
 def index(request):
     if not request.user.is_authenticated:
@@ -51,3 +52,28 @@ def profile(request,user_id):
     neighborhoods = Neighborhood.objects.all()
 
     return render(request,'profile.html',{'neighborhoods':neighborhoods,'businesses':businesses,'profile':profile,'form':form,'emergencies':emergencies})
+def neighborhood(request,neighborhood_id):
+    if request.user.id == 1:
+        neighborhood = Neighborhood.objects.get(id = neighborhood_id)
+        members = UserProfile.objects.filter(neighborhood = neighborhood).all()
+        emergencies = EmergencyContacts.objects.filter(neighborhood_contact = neighborhood).all()
+        return render(request,'neighborhood.html',{'neighborhood':neighborhood,'members':members,'emergencies':emergencies})
+    else:
+        neighborhood = Neighborhood.objects.get(id = neighborhood_id)
+        user = UserProfile.objects.filter(user = request.user).first()
+        businesses = Business.objects.filter(business_neighborhood=neighborhood).all()
+        emergencies = EmergencyContacts.objects.filter(neighborhood_contact = neighborhood).all()
+        user.neighborhood = neighborhood
+        user.save()
+
+        if request.method == "POST":
+            form = PostForm(request.POST)
+            if form.is_valid():
+                post = Post(title=request.POST['title'],post_description=request.POST['post_description'],posted_by=request.user,post_hood=neighborhood,posted_on=datetime.datetime.now())
+                post.save()
+                return redirect(reverse('neighborhood',args=[neighborhood.id]))
+        else:
+            form = PostForm()
+
+        posts = Post.objects.filter(post_hood = neighborhood).all()
+        return render(request,'neighborhood.html',{'posts':posts,'form':form,'user':user,'businesses':businesses,'neighborhood':neighborhood,'emergencies':emergencies})
