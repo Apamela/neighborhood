@@ -23,4 +23,6 @@ A web application that allows you to be in the loop about everything happening i
 * gunicorn==19.8.1
 * python-decouple==3.1
 * whitenoise==3.3.1
-
+# Contact
+Email: pamelab.desire@gmail.com
+Number:+250780365718
