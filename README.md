@@ -22,7 +22,5 @@ A web application that allows you to be in the loop about everything happening i
 * django-tinymce==2.7.0
 * gunicorn==19.8.1
 * python-decouple==3.1
-pytz==2018.4
-six==1.11.0
-whitenoise==3.3.1
-wrapt==1.10.11
+* whitenoise==3.3.1
+
