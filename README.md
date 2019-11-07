@@ -12,3 +12,4 @@ A web application that allows you to be in the loop about everything happening i
 * Install all the dependancies that come with the project from the requirements.txt by running python3.6 -m pip install -r requirements.txt on the terminal.
 * You can then run python3.6 manage.py runserver on the terminal and access the application locally on default port http://127.0.0.1:8000/
 * You can access the application remotly on my heroku application 
+# Technologies/Dependencies 
