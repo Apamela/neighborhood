@@ -74,7 +74,7 @@
         </ul>
       </div>
       <div class="modal-footer">
-        <a class="modal-close btn-flat" style="color:#ee6e73;">Close</a>
+        <a class="modal-close btn-flat" style="color:slategray;">Close</a>
       </div>
     </div>
 
@@ -85,7 +85,7 @@
           <div class="card-content">
             <div class="section">
               <h5 class="card-title center-align">Alerts and Meetings</h5>
-              <a href="#modal3" data-target="modal3" class="modal-trigger btn-floating" style="background-color:#ee6e73!important;"><i class="material-icons">add</i></a>
+              <a href="#modal3" data-target="modal3" class="modal-trigger btn-floating" style="background-color:slategray;"><i class="material-icons">add</i></a>
             </div>
 
             <!-- Post Form Modal -->
@@ -96,7 +96,7 @@
                 <form action="{% url 'neighborhood' neighborhood.id %}" method="POST">
                   {% csrf_token %}
                   {% bootstrap_form form%}
-                  <button class="btn" style="background-color:#ee6e73;" type="submit" name="action">Post</button>
+                  <button class="btn" style="background-color:slategray;" type="submit" name="action">Post</button>
                 </form>
               </div>
             </div>
