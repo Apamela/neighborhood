@@ -21,11 +21,7 @@ A web application that allows you to be in the loop about everything happening i
 * django-registration==2.4.1
 * django-tinymce==2.7.0
 * gunicorn==19.8.1
-isort==4.3.4
-lazy-object-proxy==1.3.1
-mccabe==0.6.1
-Pillow==5.1.0- psycopg2==2.7.4- pylint==1.8.4
-python-decouple==3.1
+* python-decouple==3.1
 pytz==2018.4
 six==1.11.0
 whitenoise==3.3.1
