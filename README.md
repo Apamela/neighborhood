@@ -17,10 +17,10 @@ A web application that allows you to be in the loop about everything happening i
 * CSS
 * HTML
 * Django==1.11
-*django-bootstrap4==10.0.1
-django-registration==2.4.1
-django-tinymce==2.7.0
-gunicorn==19.8.1
+* django-bootstrap4==10.0.1
+* django-registration==2.4.1
+* django-tinymce==2.7.0
+* gunicorn==19.8.1
 isort==4.3.4
 lazy-object-proxy==1.3.1
 mccabe==0.6.1
