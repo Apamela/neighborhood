@@ -25,5 +25,7 @@ A web application that allows you to be in the loop about everything happening i
 * whitenoise==3.3.1
 # Contact
 Email: pamelab.desire@gmail.com
+
 Number:+250780365718
 # License
+copyright(C)2019 pamy
