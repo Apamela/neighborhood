@@ -5,11 +5,7 @@ from tinymce.models import HTMLField
 # Create your models here.
 class Neighborhood(models.Model):
     neighborhood_name = models.CharField(max_length=30)
-    location = models.CharField(max_length=60)
-    admin = models.ForeignKey("Profile", on_delete=models.CASCADE, related_name='hood')
-    hood_logo = models.ImageField(upload_to='images/')
-    description = models.TextField()
-    
+   
     def create_neighborhood(self):
         self.save()
 
@@ -32,8 +28,7 @@ class Neighborhood(models.Model):
 class Profile(models.Model):
     name = models.CharField(max_length=20,blank=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    bio= models.TextField(max_length=254,blank=True)
-    profile_picture = models.ImageField(upload_to='images/', default='default.png')
+    bio= models.TextField(max_length=240)
     location = models.CharField(max_length=30,blank=True)
     neighborhood = models.ForeignKey('Neighborhood',on_delete=models.CASCADE,null=True,blank=True)
 
@@ -52,9 +47,9 @@ class Profile(models.Model):
 
 class Business(models.Model):
     name = models.CharField(max_length=30)
+    owner = models.ForeignKey(User,on_delete=models.CASCADE)
     business_location = models.CharField(max_length=30,blank=True)
     business_neighborhood = models.ForeignKey('Neighborhood',on_delete=models.CASCADE)
-    description = models.TextField(blank=True)
     email = models.EmailField()
 
     def create_business(self):
@@ -64,8 +59,10 @@ class Business(models.Model):
         self.delete()
 
     @classmethod
-    def search_business(cls, name):
-        return cls.objects.filter(name__icontains=name).all()
+    def find_business(cls,business_id):
+        business = cls.objects.get(id=business_id)
+        return business
+
     def update_business(self,name):
         self.name = name
         self.save()
@@ -86,10 +83,11 @@ class EmergencyContacts(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=40)
+    post_description = HTMLField()
     posted_by = models.ForeignKey(User,on_delete=models.CASCADE)
     post_hood = models.ForeignKey('Neighborhood',on_delete=models.CASCADE)
     posted_on = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='post_owner')
+
     def __str__(self):
         return f'{self.title},{self.post_hood.neighborhood_name}'
 
