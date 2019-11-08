@@ -65,7 +65,7 @@ INSTALLED_APPS = [
     'hoodapp',
     'bootstrap4',
     'tinymce',
-    'django_registration',
+    # 'django_registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

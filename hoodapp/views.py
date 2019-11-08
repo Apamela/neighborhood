@@ -11,7 +11,7 @@ import datetime
 # Create your views here.
 def welcome(request):
     if not request.user.is_authenticated:
-        return redirect('signout')
+        return render(request,'welcome.html')
     else:
         if request.user.id == 1:
             if request.method == 'POST':
@@ -85,9 +85,9 @@ def profile(request,user_id):
 
     return render(request,'profile.html',{'neighborhoods':neighborhoods,'businesses':businesses,'profile':profile,'form':form,'emergencies':emergencies})
 
-def signout(request):
-    logout(request)
-    return redirect('login')
+# def signout(request):
+#     logout(request)
+#     return redirect('login')
 
 def add_business(request):
     user = User.objects.filter(id = request.user.id).first()
