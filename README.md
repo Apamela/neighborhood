@@ -4,7 +4,6 @@
 A web application that allows you to be in the loop about everything happening in your neighborhood.
 # Setup/installation
 * You'll need internet connection.
-* Create a folder in your desktop.
 * Inside the folder clone the project from my repository: run git clone https://github.com/Mugala/neighbourhood-watch-.git on the terminal.
 * Change directory to the downloaded folder run cd neighbourhood-watch on the terminal.
 * Create a virtual environment in the folder run python3.6 -m venv virtual on the terminal.
